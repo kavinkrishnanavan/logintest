@@ -27,7 +27,7 @@ def login():
     if st.button("Login"):
         if username in ALLOWED_USERS and ALLOWED_USERS[username] == password:
             st.session_state.logged_in = True
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Invalid username or password")
 
@@ -4002,6 +4002,7 @@ elif page == "Summary of Results":
 st.markdown(r"""
 ---
 """)
+
 
 
 
