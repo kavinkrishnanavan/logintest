@@ -9,11 +9,7 @@ import math # Import math for new calculations
 import Flowregime as fr # Import the new module
 
 # --- Add this block at the very top of your file ---
-ALLOWED_USERS = {
-    "user1": "password1",
-    "user2": "password2",
-    # Add more users as needed
-}
+ALLOWED_USERS = st.secrets["users"]
 
 # ...existing code...
 
@@ -4002,6 +3998,7 @@ elif page == "Summary of Results":
 st.markdown(r"""
 ---
 """)
+
 
 
 
