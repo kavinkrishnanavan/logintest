@@ -8,6 +8,35 @@ import pandas as pd # Import pandas for data table
 import math # Import math for new calculations
 import Flowregime as fr # Import the new module
 
+# --- Add this block at the very top of your file ---
+ALLOWED_USERS = {
+    "user1": "password1",
+    "user2": "password2",
+    # Add more users as needed
+}
+
+# ...existing code...
+
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+def login():
+    st.title("Login")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        if username in ALLOWED_USERS and ALLOWED_USERS[username] == password:
+            st.session_state.logged_in = True
+            st.experimental_rerun()
+        else:
+            st.error("Invalid username or password")
+
+if not st.session_state.logged_in:
+    login()
+    st.stop()  # Stop the app here if not logged in
+
+# ...rest of your Streamlit app code (including st.set_page_config, etc.)...
+
 #@st.cache_data
 def create_plot_buffers(plot_data_original, plot_data_adjusted, plot_data_after_gravity, plot_data_after_mist_extractor):
     import matplotlib.pyplot as plt
